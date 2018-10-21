@@ -12,8 +12,9 @@ router.route("/")
 	.post((req, res) => {
 		const pushToken = req.body.pushToken;
 		const message = {
-			data: {
-				message: 'Hi friend'
+			notification: {
+				title: 'This is title',
+				body: 'Hi this is body speaking'
 			},
 			token: pushToken
 		};
