@@ -3,3 +3,5 @@ node_modules
 
 client/.env
 .env
+firebase-service-account.json
+client/public/firebase-messaging-sw.js
