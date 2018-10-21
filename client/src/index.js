@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import firebase from 'firebase';
 import keys from './keys';
+import axios from 'axios';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
@@ -19,15 +20,6 @@ firebase.initializeApp(keys.firebase);
 
 const messaging = firebase.messaging();
 
-// navigator.serviceWorker
-// 	.register('./firebase-messaging-sw.js')
-// 	.then((registration) => {
-// 		firebase.messaging().useServiceWorker(registration);
-// 	})
-// 	.catch(function(err) {
-// 		console.log('Error sw' + err);
-// 	});
-
 messaging.requestPermission()
 .then(function() {
 	console.log('Have permission.');
@@ -35,6 +27,9 @@ messaging.requestPermission()
 })
 .then(function(token) {
 	console.log('This is token: ', token);
+	axios.post('api/pushtoken', {
+		pushToken: token
+	});
 })
 .catch(function(err) {
 	console.log('Error occurred' + err);
