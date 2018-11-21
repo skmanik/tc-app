@@ -13,7 +13,9 @@ class PushNotificationManager {
 	
 	registerToken(token) {
 		// send dummy message
-		this.sendNotification(token, "Hi", "I am bad at this");
+		const promise = this.sendNotification(token, "Hi", "I am bad at this");
+
+		return promise;
 	}
 
 	sendNotification(pushToken, messageTitle, messageBody) {
@@ -25,13 +27,9 @@ class PushNotificationManager {
 			token: pushToken
 		};
 
-		admin.messaging().send(message)
-			.then((response) => {
-				console.log('Successfully sent message:', response);
-			})
-			.catch((error) => {
-				console.log('Error sending message:', error);
-			});
+		const promise = admin.messaging().send(message);
+
+		return promise;
 	}
 
 }
