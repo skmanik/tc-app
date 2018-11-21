@@ -1,31 +1,10 @@
-const admin = require('firebase-admin');
-const serviceAccount = require('../firebase-service-account.json');
 const router = require("express").Router();
-
-admin.initializeApp({
-	credential: admin.credential.cert(serviceAccount),
-	databaseURL: "https://tc-app-9e831.firebaseio.com"
-});
+const notificationManager = new (require("../utilities/PushNotificationManager"))();
 
 // matches with "/api/pushtoken"
 router.route("/")
 	.post((req, res) => {
-		const pushToken = req.body.pushToken;
-		const message = {
-			notification: {
-				title: 'This is title',
-				body: 'Hi this is body speaking'
-			},
-			token: pushToken
-		};
-
-		admin.messaging().send(message)
-			.then((response) => {
-				console.log('Successfully sent message:', response);
-			})
-			.catch((error) => {
-				console.log('Error sending message:', error);
-			});
+		notificationManager.registerToken(req.body.pushToken);
 
 		console.log(req.body);
 		res.status(200);
