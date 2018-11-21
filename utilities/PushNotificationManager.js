@@ -15,7 +15,11 @@ class PushNotificationManager {
 		// send dummy message
 		const promise = this.sendNotification(token, "Hi", "I am bad at this");
 
-		return promise;
+		const dummy = new Promise((resolve, reject) => {
+			resolve();
+		});
+
+		return dummy;
 	}
 
 	sendNotification(pushToken, messageTitle, messageBody) {
