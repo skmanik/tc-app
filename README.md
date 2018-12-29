@@ -1,6 +1,6 @@
 # tc-app
 
 ```bash
-$ npm install
+$ yarn install
 $ yarn start
 ```
