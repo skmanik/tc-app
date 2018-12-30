@@ -10,7 +10,8 @@ const UserSchema = new Schema({
 	followedGames: [{
 		type: mongoose.Schema.ObjectId,
 		ref: "Game"
-	}]
+	}],
+	tokens: [String]
 });
 
 const User = mongoose.model("User", UserSchema);
