@@ -3,6 +3,10 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  doTest() {
+    console.log("Is this testing anything?");
+  }
+
   render() {
     return (
       <div className="App">
@@ -13,11 +17,10 @@ class App extends Component {
           </p>
           <a
             className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#"
+            onClick={this.doTest}
           >
-            Learn React
+            Click to Test
           </a>
         </header>
       </div>
