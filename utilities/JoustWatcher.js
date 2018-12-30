@@ -22,5 +22,5 @@ class JoustWatcher {
 }
 
 module.exports = function(pushNotificationManager, db) {
-	return JoustWatcher(pushNotificationManager, db);
+	return new JoustWatcher(pushNotificationManager, db);
 }
